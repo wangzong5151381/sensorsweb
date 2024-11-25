@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- <script src="./sensorsdata.min.js"></script> -->
+    <script src="./abtest.min.js"></script>
+    <!-- <script src="./dist/web/plugin/sm-encryption/index.js"></script> -->
+    <!-- <script ></script> -->
+    
+    
+    <script charset="UTF-8">
+</script>
+<div data-sensors-exposure-event-name="home_top_banner" data-sensors-exposure-config-area_rate="1"  data-sensors-exposure-config-stay_duration="2" data-sensors-exposure-config-repeated="true" data-sensors-exposure-property-propA="valueA" data-sensors-exposure-property-propB="valueB">whx曝光测试</div>
+<script type="module" >
+    // import Exposure from '/node_modules/sa-sdk-javascript/dist/web/plugin/exposure/index.es6';
+    import customEventsSender from './index.es6.js';
+    import sensors from '/node_modules/sa-sdk-javascript/dist/web/sensorsdata.es6.js'
+    import SMEncryption from '/node_modules/sa-sdk-javascript/dist/web/plugin/sm-encryption/index.es6.js';
+    import Exposure from '/node_modules/sa-sdk-javascript/dist/web/plugin/exposure/index.es6.js';  
+
+    var exposure = sensors.use(Exposure, {
+  area_rate: 0, 
+  stay_duration: 1, 
+  repeated: true 
+});
+let currentUrl = new URL(window.location.href);
+
+        
+        // 创建或修改 URL 的查询参数
+        currentUrl.searchParams.set('utm_source', 'google');
+//         currentUrl.searchParams.set('utm_medium', 'cpc');
+//         currentUrl.searchParams.set('utm_campaign', 'Assemblage_H2SERPENTILYF2024_Event_NLT_ProgrammaticDisplay_Purchase_CPM_TABuy-Highincomeconsumer__2PDATA_FeedAd_CPM_Mobile_Y_MZMonitored_UnMonitored_MgtvVideo-BCN-TopElite-H2SERPENTILYF2024-SerNecklace-Ass');
+//         currentUrl.searchParams.set('from', 'whx');
+//         currentUrl.searchParams.set('code', '111');
+//         // 修改当前页面的 URL (不会导致页面重新加载)
+        window.history.replaceState({}, '', currentUrl);
+//     function getServerUrls() {
+//     // 根据不同的条件来选择 server_url
+//     // 这里的条件可以是环境、用户角色、时间等
+//     if (a=1) {
+//         return ['http://10.129.27.126:8106/sa?project=production'];
+//     } else {
+//         return ['http://10.129.27.126:8106/sa?project=default'];
+//     }
+// }
+const url='pages/Home/StartVideo?utm_source=WeChat_CN&utm_medium=Display&utm_term=MomentAds&utm_campaign=Bulgari_WJ_CHN_H2SERPENTILYF2024_UNI_JWL_202409_Conversion_Display_CNY_Performance_2024090913&utm_content=Tencent Group_H2SERPENTILYF2024_Event_NLT_Direct Display_Purchase_CPM_TA Buy-Retargeting/ campaign engager__2P DATA_Feed Ad_CPM_Mobile_Y_MZ UnMonitored_UnMonitored_WECHATMP-adsinteraction-H2SERPENTILYF2024-SerbraceletHPcopyfree-TC_JEW_M_NBR_RMK_adsinteraction_JG-oCPX'
+
+// const utm='pages/Home/StartVideo?utm_source=Assemblage_CN&utm_medium=Display&utm_term=Newsfeed-cpm&utm_campaign=Bulgari_WJ_CHN_HSERPENTILYF2024_UNI_JWL_202409_Conversion_Display_CNY_Performance_2024090912&utm_content=Assemblage_H2SERPENTILYF2024_Event_NLT_ProgrammaticDisplay_Purchase_CPM_TABuy-Highincomeconsumer__2PDATA_FeedAd_CPM_Mobile_Y_MZMonitored_UnMonitored_NeteaseNews-WECHATMP-TopElite-H2SERPENTILYF2024-Serbracelet-Mix'
+const utm='Content:Assemblage_H2SERPENTILYF2024_Event_NLT_ProgrammaticDisplay_Purchase_CPM_TABuy-Highincomeconsumer__2PDATA_FeedAd_CPM_Mobile_Y_MZMonitored_UnMonitored_NeteaseNews-WECHATMP-TopElite-H2SERPENTILYF2024-Serbracelet-Mix'
+console.log('urllenth',url.length)
+console.log('utmlenth',utm.length)
+// var sensors = window['sensorsDataAnalytic201505'];
+// var sensors = require('sa-sdk-javascript');
+// var customEventsSender = window['customEventsSender'];
+// sensors.registerApp({$time:1434556935000
+	
+// }); 
+
+sensors.init({
+  		 server_url: 'http://wap.dev.psbc.com/sa?project=default',
+          is_secure_cookie: true,
+		is_track_single_page:true, // 单页面配置，默认开启，若页面中有锚点设计，需要将该配置删除，否则触发锚点会多触发 $pageview 事件
+		use_client_time:true, 
+        show_log:true,
+        app_js_bridge:true,
+        max_referrer_string_length:300,
+        //子配置项 true 表示采集,false 表示不采集,未设置的参数取默认值。
+
+  		send_type:'beacon',
+          source_channel:['from','code'],
+		heatmap: {
+			//是否开启点击图，default 表示开启，自动采集 $WebClick 事件，可以设置 'not_collect' 表示关闭。
+			clickmap:'default',
+			//是否开启触达图，not_collect 表示关闭，不会自动采集 $WebStay 事件，可以设置 'default' 表示开启。
+			scroll_notice_map:'default',
+            collect_input:function(element_target){
+		//例如如果元素的 id 是a，就采集这个元素里的内容。
+		if(element_target.id === 'myInput'){
+			return true;
+		}
+        
+	},
+		} ,
+        
+        preset_properties: {
+	//是否采集 $latest_utm 最近一次广告系列相关参数，默认值 true。
+	latest_utm:true,
+	//是否采集 $latest_traffic_source_type 最近一次流量来源类型，默认值 true。
+	latest_traffic_source_type:true,
+	//是否采集 $latest_search_keyword 最近一次搜索引擎关键字，默认值 true。
+	latest_search_keyword:true,
+	//是否采集 $latest_referrer 最近一次前向地址，默认值 true。
+	latest_referrer:true,
+	//是否采集 $latest_referrer_host 最近一次前向地址，1.14.8 以下版本默认是true，1.14.8 及以上版本默认是 false，需要手动设置为 true 开启。
+	latest_referrer_host:false,
+	//是否采集 $latest_landing_page 最近一次落地页地址，默认值 false。
+	latest_landing_page:false,
+	//是否采集 $url 页面地址作为公共属性，1.16.5 以下版本默认是 false，1.16.5 及以上版本默认是 true。
+	url: true,
+	//是否采集 $title 页面标题作为公共属性，1.16.5 以下版本默认是 false，1.16.5 及以上版本默认是 true。
+	title: true,
+},
+
+	});
+    sensors.registerPage({
+	$model: 'gonggongmodle38'
+});
+
+
+sensors.use(SMEncryption,{
+    pkv:2,
+    pub_key: '04c93fc01acd3892e753abf9ce3cfaafff3dd006b019456f0cca1a05429fcaf66549f643fee2cc604fa6bfe603a2a7dbe81b71ebaf21bc2a7b90586891b6127435'
+  });
+    function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+const refererTitle = getQueryParam('referer_title');
+console.log('Referer Title:', refererTitle);
+
+    // var abtest = sensors.use('SensorsABTest',{
+    //      url:"分流试验请求地址",
+   	// 	 multilink: false
+    // });
+//     sensors.use(customEventsSender, function(option){
+//     var event_name = option.event_name; // 当前触发采集数据的事件名称
+//     var data = option.data; // 当前触发采集数据的完整数据
+//     var server_url = option.server_url; // 当前触发采集数据的默认发送数据接收端地址
+//     if(event_name === 'test'){
+//         return ['https://alpha.demo.sensorsdata.cn/sa?project=production'] // 仅发送数据到自定义数据接收端 1
+//     }
+//     if(event_name === 'test1'){
+//          return server_url // 发送数据到自定义数据接收端 1及默认数据接收端 server_url
+//     }
+
+//     if(event_name === 'dengchu'){
+//          return [] // 任何数据接收端都不发送
+//     }
+//     return [server_url] // 仅发送数据接收端 server_url
+// });
+    // let object = new Object();
+// console.log('object',object)
+// sensors.track('object',object)
+// console.log('object')
+
+    sensors.track('BuyProductwhx', {
+    BuyProduct: "MacBook Pro", 
+	ProductPrice: null, 
+	IsAddedToFav: false,
+    $event_duration:'12',
+    $element_id:'whx',
+    DAxie:'sss'
+    // $time:new Date('2024-09-22 15:20:30')
+});
+    // sensors.disableSDK() 
+    // console.log('bucaiji')
+//     sensors.track('"BuyProductwhx"', {
+//     BuyProduct: "MacBook Pro", 
+// 	ProductPrice: 123.45, 
+// 	IsAddedToFav: false,
+//     // event_duration:code,
+//     $element_id:'whx'
+// });
+// sensors.enableSDK() 
+    console.log('caiji')
+	
+    sensors.on('addEventListener',function(obj){
+console.log('success----',obj)
+// 你的操作
+});
+    sensors.quick('isReady',function(){
+	var presetProperties = sensors.getPresetProperties();
+    console.log('presetProperties ',presetProperties )
+});
+ 
+
+//     sensors.registerPropertyPlugin({
+//   isMatchedWithFilter:function(data){
+// 	return data.event === "$pageview";
+//   },
+//   properties:function(data){
+// 	data.properties['$title'] = 'whx';
+//   }
+// });
+//     sensors.registerPage({
+//      BuyProduct: 'whx'
+// });
+// sensors.registerPropertyPlugin({
+//   isMatchedWithFilter:function(data){
+// 	return data.event === "$pageview";
+//   }
+// ,
+//   properties:function(data){
+// 	data.properties['$title'] = 'http://xxx';
+//   }
+// });
+
+
+let ceshi1;
+console.log('ceshi1',ceshi1)
+sensors.quick('autoTrack', {
+	$element_content:'h5',
+    $title:'whx',
+    ceshi:ceshi1
+})
+    sensors.setProfile({gonghao:'xxx@xx'});
+    const code='22222222'
+    sensors.use('PageLoad');
+    // senesors.setProfileonce
+
+ sensors.login('whx1');
+// sensors.login('whx2');
+console.log('登录');
+sensors.track('denglu',{$referrer:'wwww'
+    
+})
+
+sensors.use('PageLeave',{custom_props:{
+    prop1:'value1'}
+});
+// console.log('wwtime',new Date('2024-09-22 15:20:30'));
+sensors.logout();
+console.log('登出');
+sensors.track('dengchu22',{$referrer:'wwww'
+   
+})
+// sensors.track('$pageview', {
+// 	$title: "MacBook Pro", 
+// });
+
+        </script>
+</script>
+</head>
+<body>
+    <nav>
+        <div>
+        <div>ssss</div>
+        <button data-page="home">Home</button>
+        <van-tabs>
+            <van-tab title="测试1" data-sensors-click name="测试1html">测试1</van-tab>
+            <van-tab title="测试2" data-sensors-click name="测试2">测试2</van-tab> 
+            <van-tab title="测试3" data-sensors-click name="测试3">测试3</van-tab> 
+           </van-tabs>
+
+           <a>a标签</a>
+           <textarea>textara标签</textarea>
+        <button class="123" data-page="about">About</button>
+        <input>deee</input>
+        
+    </div>
+    </nav>
+    <div id="app"></div>
+    <script>
+        const appElement = document.getElementById('app');
+
+        function renderContent(content) {
+            appElement.innerHTML = content;
+        }
+
+        function navigateToPage(pageName) {
+            const pageTitle = pageName.charAt(0).toUpperCase() + pageName.slice(1);
+            const pageContent = pageName === 'home' ? '<h1>Welcome to the Home Page!</h1>' : '<h1>About Us</h1><p>We are a simple SPA.</p>';
+            
+            renderContent(pageContent);
+
+            // 修改 URL
+            history.pushState({ page: pageName }, pageTitle, `#${pageName}`);
+            
+        }
+
+        // 处理页面加载时的初始 URL
+        window.addEventListener('popstate', function(event) {
+            const pageName = event.state && event.state.page ? event.state.page : 'home';
+            navigateToPage(pageName);
+        });
+
+        // 处理按钮点击事件
+        document.addEventListener('click', function(event) {
+            const target = event.target;
+            if (target.tagName === 'BUTTON' && target.dataset.page) {
+                navigateToPage(target.dataset.page);
+                console.log('点击')
+            }
+        });
+
+        // 初始页面加载时，触发一次 popstate 事件
+        window.dispatchEvent(new Event('popstate'));
+
+        
+    </script>
+<div class="p-channel-list__select-search"><div class="plv-condition-filter" style="align-items: flex-end;"><div class="plv-condition-filter__left"><div class="p-channel-list__select-search__row"><div class="plv-row" style="margin-left: -24px; margin-right: -24px;"><div class="plv-col" style="width: 33.3333%; padding-left: 24px; padding-right: 24px;"><div class="plv-condition-filter-item"><div class="plv-condition-filter-item__label">直播分类</div> <div class="plv-condition-filter-item__content" style="width: 100%;"><div class="plv-select plv-select--small" size-sensor-id="1"><div class="plv-select__body"><!----> <input type="text" readonly="readonly" unselectable="on" placeholder="请选择" class="plv-select__body__input"> <div class="plv-select__body__suffix"><span class="plv-select__body__suffix__downicon"><span class="plv-admin-icon-arrow-down"></span></span> <!----></div></div> </div> <!----> <!----> <!----></div></div></div><div class="plv-col" style="width: 33.3333%; padding-left: 24px; padding-right: 24px;"><div class="plv-condition-filter-item c-condition-filter-tag" get-options-callback="function () { [native code] }" width="100%" prop="labelData" label="直播标签"><div class="plv-condition-filter-item__label">直播标签</div> <div class="plv-condition-filter-item__content" style="width: 100%;"><div class="plv-select c-condition-filter-tag-select plv-select--small" size="small" size-sensor-id="1"><div class="plv-select__body"><!----> <input type="text" readonly="readonly" unselectable="on" placeholder="全部" class="plv-select__body__input"> <div class="plv-select__body__suffix"><span class="plv-select__body__suffix__downicon"><span class="plv-admin-icon-arrow-down"></span></span> <!----></div></div> </div></div></div></div><div class="plv-col" style="width: 33.3333%; padding-left: 24px; padding-right: 24px;"><div class="plv-condition-filter-item"><div class="plv-condition-filter-item__label">直播状态</div> <div class="plv-condition-filter-item__content" style="width: 100%;"><div class="plv-select plv-select--open plv-select--small" size-sensor-id="2"><div class="plv-select__body"><!----> <input type="text" readonly="readonly" unselectable="on" placeholder="请选择" class="plv-select__body__input"> <div class="plv-select__body__suffix"><span class="plv-select__body__suffix__downicon plv-select__body__suffix__downicon--reverse"><span class="plv-admin-icon-arrow-down"></span></span> <!----></div></div> </div> <!----> <!----> <!----></div></div></div><div class="plv-col" style="width: 33.3333%; padding-left: 24px; padding-right: 24px;"><div class="plv-condition-filter-item"><div class="plv-condition-filter-item__label">直播场景</div> <div class="plv-condition-filter-item__content" style="width: 100%;"><div class="plv-select plv-select--small" size-sensor-id="3"><div class="plv-select__body"><!----> <input type="text" readonly="readonly" unselectable="on" placeholder="请选择" class="plv-select__body__input"> <div class="plv-select__body__suffix"><span class="plv-select__body__suffix__downicon"><span class="plv-admin-icon-arrow-down"></span></span> <!----></div></div> </div> <!----> <!----> <!----></div></div></div><div class="plv-col" style="width: 33.3333%; padding-left: 24px; padding-right: 24px;"><div class="plv-condition-filter-item"><div class="plv-condition-filter-item__label">直播模版</div> <div class="plv-condition-filter-item__content" style="width: 100%;"><div class="plv-cascader plv-cascader--small"><div class="plv-cascader__body"><input type="text" readonly="readonly" unselectable="on" placeholder="请选择" class="plv-cascader__body__input"> <div class="plv-cascader__body__suffix"><span class="plv-admin-icon plv-admin-icon-arrow-down plv-icon"></span></div></div> </div></div></div></div><div class="plv-col" style="width: 33.3333%; padding-left: 24px; padding-right: 24px;"><div class="plv-condition-filter-item"><div class="plv-condition-filter-item__label">观看条件</div> <div class="plv-condition-filter-item__content" style="width: 100%;"><div class="plv-select plv-select--small" size-sensor-id="4"><div class="plv-select__body"><!----> <input type="text" readonly="readonly" unselectable="on" placeholder="请选择" class="plv-select__body__input"> <div class="plv-select__body__suffix"><span class="plv-select__body__suffix__downicon"><span class="plv-admin-icon-arrow-down"></span></span> <!----></div></div> </div> <!----> <!----> <!----></div></div></div><div class="plv-col" style="width: 33.3333%; padding-left: 24px; padding-right: 24px;"><div class="plv-condition-filter-item"><div class="plv-condition-filter-item__label">直播延迟</div> <div class="plv-condition-filter-item__content" style="width: 100%;"><div class="plv-select plv-select--small" size-sensor-id="5"><div class="plv-select__body"><!----> <input type="text" readonly="readonly" unselectable="on" placeholder="请选择" class="plv-select__body__input"> <div class="plv-select__body__suffix"><span class="plv-select__body__suffix__downicon"><span class="plv-admin-icon-arrow-down"></span></span> <!----></div></div> </div> <!----> <!----> <!----></div></div></div><div class="plv-col" style="width: 33.3333%; padding-left: 24px; padding-right: 24px;"><div class="plv-condition-filter-item"><div class="plv-condition-filter-item__label">开始时间</div> <div class="plv-condition-filter-item__content" style="width: 100%;"><!----> <div class="plv-date-picker plv-condition-filter-item__date"><div class="plv-date-picker__inner"><div class="plv-input plv-input--small plv-date-picker__input"><!----> <div class="plv-input__main plv-input__main--small plv-input__main--suffix"><!----> <div class="plv-input__main__input"><input unselectable="" autocomplete="off" placeholder="开始时间 - 结束时间" type="text" class="plv-input__main__input__inner"></div> <div class="plv-input__main__suffix"><span class="plv-admin-icon-calendar"></span></div></div> <!----></div></div> </div> <!----> <!----></div></div></div></div></div></div> <div class="plv-condition-filter__right"><button class="plv-button plv-mb-16 plv-button--medium plv-button--operate">重置</button></div></div></div>
+</body>
+</html>
