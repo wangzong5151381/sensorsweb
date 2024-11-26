@@ -15,10 +15,14 @@
 <div data-sensors-exposure-event-name="home_top_banner" data-sensors-exposure-config-area_rate="1"  data-sensors-exposure-config-stay_duration="2" data-sensors-exposure-config-repeated="true" data-sensors-exposure-property-propA="valueA" data-sensors-exposure-property-propB="valueB">whx曝光测试</div>
 <script type="module" >
     // import Exposure from '/node_modules/sa-sdk-javascript/dist/web/plugin/exposure/index.es6';
-    import customEventsSender from './index.es6.js';
-    import sensors from '/node_modules/sa-sdk-javascript/dist/web/sensorsdata.es6.js'
-    import SMEncryption from '/node_modules/sa-sdk-javascript/dist/web/plugin/sm-encryption/index.es6.js';
-    import Exposure from '/node_modules/sa-sdk-javascript/dist/web/plugin/exposure/index.es6.js';  
+    // import customEventsSender from './index.es6.js';
+    // import sensors from '/node_modules/sa-sdk-javascript/dist/web/sensorsdata.es6.js'
+    // import SMEncryption from '/node_modules/sa-sdk-javascript/dist/web/plugin/sm-encryption/index.es6.js';
+    // import Exposure from '/node_modules/sa-sdk-javascript/dist/web/plugin/exposure/index.es6.js';  
+    //  import customEventsSender from './index.es6.js';
+    import sensors from '/sa-sdk-javascript-1.27.1/dist/web/sensorsdata.es6.js'
+    import SMEncryption from '/sa-sdk-javascript-1.27.1/dist/web/plugin/sm-encryption/index.es6.js';
+    import Exposure from '/sa-sdk-javascript-1.27.1/dist/web/plugin/exposure/index.es6.js';  
 
     var exposure = sensors.use(Exposure, {
   area_rate: 0, 
@@ -109,6 +113,12 @@ sensors.init({
 	});
     sensors.registerPage({
 	$model: 'gonggongmodle38'
+});
+sensors.registerPage({
+  prop_number: function() {
+
+    return ; // 每次访问页面时，返回 i 自增后的值
+  }
 });
 
 
