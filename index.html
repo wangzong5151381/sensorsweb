@@ -59,10 +59,13 @@ console.log('utmlenth',utm.length)
 // }); 
 
 sensors.init({
-  		 server_url: 'http://wap.dev.psbc.com/sa?project=default',
+  		 server_url: 'https://alpha.demo.sensorsdata.cn/sa?project=production',
           is_secure_cookie: true,
 		is_track_single_page:true, // 单页面配置，默认开启，若页面中有锚点设计，需要将该配置删除，否则触发锚点会多触发 $pageview 事件
 		use_client_time:true, 
+        app_js_bridge: {
+		white_list: ['https://alpha.demo.sensorsdata.cn/sa?project=production','https://alpha.demo.sensorsdata.cn/sa?project=default']
+	},
         show_log:true,
         app_js_bridge:true,
         max_referrer_string_length:300,
