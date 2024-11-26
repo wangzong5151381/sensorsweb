@@ -8,27 +8,29 @@
     <script src="./abtest.min.js"></script>
     <!-- <script src="./dist/web/plugin/sm-encryption/index.js"></script> -->
     <!-- <script ></script> -->
+    <script src="https://static.sensorsdata.cn/sdk/1.26.12/sensorsdata.min.js"></script>
+<script src="https://cdn.bootcss.com/vConsole/3.3.4/vconsole.min.js"></script>
     
-    
-    <script charset="UTF-8">
-</script>
-<div data-sensors-exposure-event-name="home_top_banner" data-sensors-exposure-config-area_rate="1"  data-sensors-exposure-config-stay_duration="2" data-sensors-exposure-config-repeated="true" data-sensors-exposure-property-propA="valueA" data-sensors-exposure-property-propB="valueB">whx曝光测试</div>
-<script type="module" >
+   
+
+<script charset="UTF-8">
     // import Exposure from '/node_modules/sa-sdk-javascript/dist/web/plugin/exposure/index.es6';
     // import customEventsSender from './index.es6.js';
     // import sensors from '/node_modules/sa-sdk-javascript/dist/web/sensorsdata.es6.js'
     // import SMEncryption from '/node_modules/sa-sdk-javascript/dist/web/plugin/sm-encryption/index.es6.js';
     // import Exposure from '/node_modules/sa-sdk-javascript/dist/web/plugin/exposure/index.es6.js';  
     //  import customEventsSender from './index.es6.js';
-    import sensors from '/sa-sdk-javascript-1.27.1/dist/web/sensorsdata.es6.js'
-    import SMEncryption from '/sa-sdk-javascript-1.27.1/dist/web/plugin/sm-encryption/index.es6.js';
-    import Exposure from '/sa-sdk-javascript-1.27.1/dist/web/plugin/exposure/index.es6.js';  
-
-    var exposure = sensors.use(Exposure, {
-  area_rate: 0, 
-  stay_duration: 1, 
-  repeated: true 
-});
+    // import sensors from '/sa-sdk-javascript-1.27.1/dist/web/sensorsdata.es6.js'
+    // import SMEncryption from '/sa-sdk-javascript-1.27.1/dist/web/plugin/sm-encryption/index.es6.js';
+    // import Exposure from '/sa-sdk-javascript-1.27.1/dist/web/plugin/exposure/index.es6.js';  
+    var sensors = window['sensorsDataAnalytic201505'];
+const vConsole = new VConsole();
+//   console.log('hello world')
+//     var exposure = sensors.use(Exposure, {
+//   area_rate: 0, 
+//   stay_duration: 1, 
+//   repeated: true 
+// });
 let currentUrl = new URL(window.location.href);
 
         
@@ -245,7 +247,7 @@ sensors.track('dengchu22',{$referrer:'wwww'
 // });
 
         </script>
-</script>
+
 </head>
 <body>
     <nav>
