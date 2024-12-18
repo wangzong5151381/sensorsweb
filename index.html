@@ -2,35 +2,34 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>whx的页面</title>
     <link rel="stylesheet" href="styles.css">
     <!-- <script src="./sensorsdata.min.js"></script> -->
     <script src="./abtest.min.js"></script>
-    <!-- <script src="./dist/web/plugin/sm-encryption/index.js"></script> -->
+    <script src="./vconsole.js"></script>
     <!-- <script ></script> -->
-    <script src="https://static.sensorsdata.cn/sdk/1.26.12/sensorsdata.min.js"></script>
-<script src="https://cdn.bootcss.com/vConsole/3.3.4/vconsole.min.js"></script>
-    
-   
-
-<script charset="UTF-8">
+    <script charset="UTF-8">
+</script>
+<!-- <script src="https://jssdk.debugbox.sensorsdata.cn/js/zhangyi/vconsole.js"></script> -->
+<div hotrep id="test1" class="testclass">whxclick测试</div>
+<div data-sensors-exposure-event-name="home_top_banner" data-sensors-exposure-config-area_rate="1"  data-sensors-exposure-config-stay_duration="2" data-sensors-exposure-config-repeated="true" data-sensors-exposure-property-propA="valueA" data-sensors-exposure-property-propB="valueB">whx曝光测试</div>
+<script type="module" >
+    const vConsole = new VConsole()
     // import Exposure from '/node_modules/sa-sdk-javascript/dist/web/plugin/exposure/index.es6';
     // import customEventsSender from './index.es6.js';
     // import sensors from '/node_modules/sa-sdk-javascript/dist/web/sensorsdata.es6.js'
     // import SMEncryption from '/node_modules/sa-sdk-javascript/dist/web/plugin/sm-encryption/index.es6.js';
     // import Exposure from '/node_modules/sa-sdk-javascript/dist/web/plugin/exposure/index.es6.js';  
     //  import customEventsSender from './index.es6.js';
-    // import sensors from '/sa-sdk-javascript-1.27.1/dist/web/sensorsdata.es6.js'
-    // import SMEncryption from '/sa-sdk-javascript-1.27.1/dist/web/plugin/sm-encryption/index.es6.js';
-    // import Exposure from '/sa-sdk-javascript-1.27.1/dist/web/plugin/exposure/index.es6.js';  
-    var sensors = window['sensorsDataAnalytic201505'];
-const vConsole = new VConsole();
-//   console.log('hello world')
-//     var exposure = sensors.use(Exposure, {
-//   area_rate: 0, 
-//   stay_duration: 1, 
-//   repeated: true 
-// });
+    import sensors from '/sa-sdk-javascript-1.27.1/dist/web/sensorsdata.es6.js'
+    import SMEncryption from '/sa-sdk-javascript-1.27.1/dist/web/plugin/sm-encryption/index.es6.js';
+    import Exposure from '/sa-sdk-javascript-1.27.1/dist/web/plugin/exposure/index.es6.js';  
+
+    var exposure = sensors.use(Exposure, {
+  area_rate: 0, 
+  stay_duration: 1, 
+  repeated: true 
+});
 let currentUrl = new URL(window.location.href);
 
         
@@ -63,24 +62,26 @@ console.log('utmlenth',utm.length)
 // sensors.registerApp({$time:1434556935000
 	
 // }); 
+sensors.track('satart');
 
 sensors.init({
-  		 server_url: 'https://sdk-product-datasink.sensorsdata.cn/sa?project=default',
+  		 server_url: 'http://10.130.14.224:8106/sa?project=production',
           is_secure_cookie: true,
 		is_track_single_page:true, // 单页面配置，默认开启，若页面中有锚点设计，需要将该配置删除，否则触发锚点会多触发 $pageview 事件
 		use_client_time:true, 
-        app_js_bridge: {
-		white_list: ['https://sdk-product-datasink.sensorsdata.cn/sa?project=default','https://sdk-product-datasink.sensorsdata.cn/sa?project=chuqiangsheng']
-	},
+    //     app_js_bridge: {
+	// 	white_list: ['http://10.130.14.224:8106/sa?project=production','http://10.130.14.224:8106/sa?project=default']
+	// },
         show_log:true,
-        app_js_bridge:true,
+        // app_js_bridge:false,
         max_referrer_string_length:300,
         //子配置项 true 表示采集,false 表示不采集,未设置的参数取默认值。
 
-  		send_type:'beacon',
+  		// send_type:'ajax',
           source_channel:['from','code'],
 		heatmap: {
-			//是否开启点击图，default 表示开启，自动采集 $WebClick 事件，可以设置 'not_collect' 表示关闭。
+			track_attr: ['hotrep', 'anotherprop', "data-prop2"],
+            //是否开启点击图，default 表示开启，自动采集 $WebClick 事件，可以设置 'not_collect' 表示关闭。
 			clickmap:'default',
 			//是否开启触达图，not_collect 表示关闭，不会自动采集 $WebStay 事件，可以设置 'default' 表示开启。
 			scroll_notice_map:'default',
@@ -92,6 +93,7 @@ sensors.init({
         
 	},
 		} ,
+
         
         preset_properties: {
 	//是否采集 $latest_utm 最近一次广告系列相关参数，默认值 true。
@@ -115,7 +117,20 @@ sensors.init({
 	});
     sensors.registerPage({
 	$model: 'gonggongmodle38'
+}
+);
+sensors.bind("identity_mobile","187****8991")
+sensors.use('SiteLinker',
+  {linker: [
+      {part_url: 'wangzong5151381.github.io', after_hash: false} 
+  ]}
+)
+    sensors.registerPage({
+     $title: '测试title'
 });
+sensors.use('PageLoad');
+sensors.use('PageLeave');
+// sensors.registerPropertyPlugin();
 sensors.registerPage({
   prop_number: function() {
 
@@ -124,10 +139,10 @@ sensors.registerPage({
 });
 
 
-sensors.use(SMEncryption,{
-    pkv:2,
-    pub_key: '04c93fc01acd3892e753abf9ce3cfaafff3dd006b019456f0cca1a05429fcaf66549f643fee2cc604fa6bfe603a2a7dbe81b71ebaf21bc2a7b90586891b6127435'
-  });
+// sensors.use(SMEncryption,{
+//     pkv:2,
+//     pub_key: '04c93fc01acd3892e753abf9ce3cfaafff3dd006b019456f0cca1a05429fcaf66549f643fee2cc604fa6bfe603a2a7dbe81b71ebaf21bc2a7b90586891b6127435'
+//   });
     function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
@@ -192,17 +207,8 @@ console.log('success----',obj)
 });
  
 
-//     sensors.registerPropertyPlugin({
-//   isMatchedWithFilter:function(data){
-// 	return data.event === "$pageview";
-//   },
-//   properties:function(data){
-// 	data.properties['$title'] = 'whx';
-//   }
-// });
-//     sensors.registerPage({
-//      BuyProduct: 'whx'
-// });
+
+
 // sensors.registerPropertyPlugin({
 //   isMatchedWithFilter:function(data){
 // 	return data.event === "$pageview";
@@ -213,7 +219,8 @@ console.log('success----',obj)
 //   }
 // });
 
-
+// sensors.identify('niming')
+// sensors.login('maomao');
 let ceshi1;
 console.log('ceshi1',ceshi1)
 sensors.quick('autoTrack', {
@@ -223,31 +230,37 @@ sensors.quick('autoTrack', {
 })
     sensors.setProfile({gonghao:'xxx@xx'});
     const code='22222222'
-    sensors.use('PageLoad');
+    
     // senesors.setProfileonce
 
- sensors.login('whx1');
-// sensors.login('whx2');
+// let whx;
+sensors.login('');
 console.log('登录');
 sensors.track('denglu',{$referrer:'wwww'
     
 })
 
-sensors.use('PageLeave',{custom_props:{
-    prop1:'value1'}
-});
+
 // console.log('wwtime',new Date('2024-09-22 15:20:30'));
-sensors.logout();
-console.log('登出');
+// sensors.logout();
+// console.log('登出');
 sensors.track('dengchu22',{$referrer:'wwww'
    
 })
+sensors.registerPropertyPlugin({
+  isMatchedWithFilter:function(data){
+	return data.event === "$WebPageLeave";
+  },
+  properties:function(data){
+	data.properties['ceshi'] = 'whx的测试';
+  }
+});
 // sensors.track('$pageview', {
 // 	$title: "MacBook Pro", 
 // });
 
         </script>
-
+</script>
 </head>
 <body>
     <nav>
