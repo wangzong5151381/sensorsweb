@@ -11,6 +11,7 @@
     <script charset="UTF-8">
 </script>
 <script src="https://jssdk.debugbox.sensorsdata.cn/js/zhangyi/vconsole.js"></script>
+<script src="https://static.sensorsdata.cn/sdk/1.26.12/sensorsdata.min.js"></script>
 <div hotrep id="test1" class="testclass">whxclick测试</div>
 <div data-sensors-exposure-event-name="home_top_banner" data-sensors-exposure-config-area_rate="1"  data-sensors-exposure-config-stay_duration="2" data-sensors-exposure-config-repeated="true" data-sensors-exposure-property-propA="valueA" data-sensors-exposure-property-propB="valueB">whx曝光测试</div>
 <script type="module" >
@@ -21,10 +22,10 @@
     // import SMEncryption from '/node_modules/sa-sdk-javascript/dist/web/plugin/sm-encryption/index.es6.js';
     // import Exposure from '/node_modules/sa-sdk-javascript/dist/web/plugin/exposure/index.es6.js';  
     //  import customEventsSender from './index.es6.js';
-    import sensors from '/sa-sdk-javascript-1.27.1/dist/web/sensorsdata.es6.js'
+    // import sensors from '/sa-sdk-javascript-1.27.1/dist/web/sensorsdata.es6.js'
     import SMEncryption from '/sa-sdk-javascript-1.27.1/dist/web/plugin/sm-encryption/index.es6.js';
     import Exposure from '/sa-sdk-javascript-1.27.1/dist/web/plugin/exposure/index.es6.js';  
-
+var sensors = window['sensorsDataAnalytic201505'];
     var exposure = sensors.use(Exposure, {
   area_rate: 0, 
   stay_duration: 1, 
