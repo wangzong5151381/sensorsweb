@@ -116,6 +116,16 @@ sensors.init({
 },
 
 	});
+	sensors.use('SiteLinker',
+    	{
+			linker: [
+      			{part_url: 'sensorsdata.cn', after_hash: false},
+      			{part_url: 'example.com', after_hash: false}
+    		],
+			 // 该配置设置为 true 后，如果从已登录的页面跳转过来，即使当前网页已经登录，当前网页仍然会以之前网页的登录 id 再次登录。
+		 	 re_login: true
+		}
+);
     sensors.registerPage({
 	$model: 'gonggongmodle38'
 }
