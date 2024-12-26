@@ -112,12 +112,6 @@ sensors.registerPage({
     return ; // 每次访问页面时，返回 i 自增后的值
   }
 });
-
-
-// sensors.use(SMEncryption,{
-//     pkv:2,
-//     pub_key: '04c93fc01acd3892e753abf9ce3cfaafff3dd006b019456f0cca1a05429fcaf66549f643fee2cc604fa6bfe603a2a7dbe81b71ebaf21bc2a7b90586891b6127435'
-//   });
     function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
@@ -160,16 +154,7 @@ console.log('Referer Title:', refererTitle);
     DAxie:'sss'
     // $time:new Date('2024-09-22 15:20:30')
 });
-    // sensors.disableSDK() 
-    // console.log('bucaiji')
-//     sensors.track('"BuyProductwhx"', {
-//     BuyProduct: "MacBook Pro", 
-// 	ProductPrice: 123.45, 
-// 	IsAddedToFav: false,
-//     // event_duration:code,
-//     $element_id:'whx'
-// });
-// sensors.enableSDK() 
+
     console.log('caiji')
 	
     sensors.on('addEventListener',function(obj){
@@ -263,31 +248,10 @@ sensors.registerPropertyPlugin({
             appElement.innerHTML = content;
         }
 
-        function navigateToPage(pageName) {
-            const pageTitle = pageName.charAt(0).toUpperCase() + pageName.slice(1);
-            const pageContent = pageName === 'home' ? '<h1>Welcome to the Home Page!</h1>' : '<h1>About Us</h1><p>We are a simple SPA.</p>';
-            
-            renderContent(pageContent);
+    
+       
 
-            // 修改 URL
-            history.pushState({ page: pageName }, pageTitle, `#${pageName}`);
-            
-        }
-
-        // 处理页面加载时的初始 URL
-        window.addEventListener('popstate', function(event) {
-            const pageName = event.state && event.state.page ? event.state.page : 'home';
-            navigateToPage(pageName);
-        });
-
-        // 处理按钮点击事件
-        document.addEventListener('click', function(event) {
-            const target = event.target;
-            if (target.tagName === 'BUTTON' && target.dataset.page) {
-                navigateToPage(target.dataset.page);
-                console.log('点击')
-            }
-        });
+       
 
         // 初始页面加载时，触发一次 popstate 事件
         window.dispatchEvent(new Event('popstate'));
