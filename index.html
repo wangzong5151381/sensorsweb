@@ -16,53 +16,17 @@
 <div data-sensors-exposure-event-name="home_top_banner" data-sensors-exposure-config-area_rate="1"  data-sensors-exposure-config-stay_duration="2" data-sensors-exposure-config-repeated="true" data-sensors-exposure-property-propA="valueA" data-sensors-exposure-property-propB="valueB">whx曝光测试</div>
 <script type="module" >
     const vConsole = new VConsole()
-    // import Exposure from '/node_modules/sa-sdk-javascript/dist/web/plugin/exposure/index.es6';
-    // import customEventsSender from './index.es6.js';
-    // import sensors from '/node_modules/sa-sdk-javascript/dist/web/sensorsdata.es6.js'
-    // import SMEncryption from '/node_modules/sa-sdk-javascript/dist/web/plugin/sm-encryption/index.es6.js';
-    // import Exposure from '/node_modules/sa-sdk-javascript/dist/web/plugin/exposure/index.es6.js';  
-    //  import customEventsSender from './index.es6.js';
-    // import sensors from '/sa-sdk-javascript-1.27.1/dist/web/sensorsdata.es6.js'
-    // import SMEncryption from '/sa-sdk-javascript-1.27.1/dist/web/plugin/sm-encryption/index.es6.js';
-    // import Exposure from '/sa-sdk-javascript-1.27.1/dist/web/plugin/exposure/index.es6.js';  
 var sensors = window['sensorsDataAnalytic201505'];
-//     var exposure = sensors.use(Exposure, {
-//   area_rate: 0, 
-//   stay_duration: 1, 
-//   repeated: true 
-// });
-let currentUrl = new URL(window.location.href);
+
 
         
-        // 创建或修改 URL 的查询参数
-        // currentUrl.searchParams.set('utm_source', 'google');
-//         currentUrl.searchParams.set('utm_medium', 'cpc');
-//         currentUrl.searchParams.set('utm_campaign', 'Assemblage_H2SERPENTILYF2024_Event_NLT_ProgrammaticDisplay_Purchase_CPM_TABuy-Highincomeconsumer__2PDATA_FeedAd_CPM_Mobile_Y_MZMonitored_UnMonitored_MgtvVideo-BCN-TopElite-H2SERPENTILYF2024-SerNecklace-Ass');
-//         currentUrl.searchParams.set('from', 'whx');
-//         currentUrl.searchParams.set('code', '111');
-//         // 修改当前页面的 URL (不会导致页面重新加载)
-        // window.history.replaceState({}, '', currentUrl);
-//     function getServerUrls() {
-//     // 根据不同的条件来选择 server_url
-//     // 这里的条件可以是环境、用户角色、时间等
-//     if (a=1) {
-//         return ['http://10.129.27.126:8106/sa?project=production'];
-//     } else {
-//         return ['http://10.129.27.126:8106/sa?project=default'];
-//     }
-// }
 const url='pages/Home/StartVideo?utm_source=WeChat_CN&utm_medium=Display&utm_term=MomentAds&utm_campaign=Bulgari_WJ_CHN_H2SERPENTILYF2024_UNI_JWL_202409_Conversion_Display_CNY_Performance_2024090913&utm_content=Tencent Group_H2SERPENTILYF2024_Event_NLT_Direct Display_Purchase_CPM_TA Buy-Retargeting/ campaign engager__2P DATA_Feed Ad_CPM_Mobile_Y_MZ UnMonitored_UnMonitored_WECHATMP-adsinteraction-H2SERPENTILYF2024-SerbraceletHPcopyfree-TC_JEW_M_NBR_RMK_adsinteraction_JG-oCPX'
 
 // const utm='pages/Home/StartVideo?utm_source=Assemblage_CN&utm_medium=Display&utm_term=Newsfeed-cpm&utm_campaign=Bulgari_WJ_CHN_HSERPENTILYF2024_UNI_JWL_202409_Conversion_Display_CNY_Performance_2024090912&utm_content=Assemblage_H2SERPENTILYF2024_Event_NLT_ProgrammaticDisplay_Purchase_CPM_TABuy-Highincomeconsumer__2PDATA_FeedAd_CPM_Mobile_Y_MZMonitored_UnMonitored_NeteaseNews-WECHATMP-TopElite-H2SERPENTILYF2024-Serbracelet-Mix'
 const utm='Content:Assemblage_H2SERPENTILYF2024_Event_NLT_ProgrammaticDisplay_Purchase_CPM_TABuy-Highincomeconsumer__2PDATA_FeedAd_CPM_Mobile_Y_MZMonitored_UnMonitored_NeteaseNews-WECHATMP-TopElite-H2SERPENTILYF2024-Serbracelet-Mix'
 console.log('urllenth',url.length)
 console.log('utmlenth',utm.length)
-// var sensors = window['sensorsDataAnalytic201505'];
-// var sensors = require('sa-sdk-javascript');
-// var customEventsSender = window['customEventsSender'];
-// sensors.registerApp({$time:1434556935000
-	
-// }); 
+
 sensors.track('satart');
 
 sensors.init({
