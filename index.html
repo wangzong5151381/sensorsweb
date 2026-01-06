@@ -39,7 +39,9 @@ sensors.track('satart');
 		 	 re_login: true
 		}
 );
-
+sensors.registerPage({
+     $title: '测试title'
+});
 sensors.init({
   		 server_url: 'https://sensorsunified.stargate.sensorsdata.cn:8106/sa?project=production',
           is_secure_cookie: true,
@@ -100,9 +102,7 @@ sensors.use('SiteLinker',
       {part_url: 'wangzong5151381.github.io', after_hash: false} 
   ]}
 )
-    sensors.registerPage({
-     $title: '测试title'
-});
+    
 sensors.use('PageLoad');
 sensors.use('PageLeave');
 // sensors.registerPropertyPlugin();
