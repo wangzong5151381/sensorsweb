@@ -39,9 +39,7 @@ sensors.track('satart');
 		 	 re_login: true
 		}
 );
-sensors.registerPage({
-     $title: '测试title'
-});
+
 sensors.init({
   		 server_url: 'https://sensorsunified.stargate.sensorsdata.cn:8106/sa?project=production',
           is_secure_cookie: true,
@@ -92,10 +90,9 @@ sensors.init({
 
 	});
 
-    sensors.registerPage({
-	$model: 'gonggongmodle38'
-}
-);
+   sensors.registerPage({
+     $title: '测试title'
+});
 sensors.bind("identity_mobile","187****8991")
 sensors.use('SiteLinker',
   {linker: [
