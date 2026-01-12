@@ -41,7 +41,7 @@ sensors.track('satart');
 );
 
 sensors.init({
-  		 server_url: 'https://sensorsunified.stargate.sensorsdata.cn:8106/sa?project=production',
+  		 server_url: 'https://sdk-product-datasink.sensorsdata.cn/sa?project=default',
           is_secure_cookie: true,
 		is_track_single_page:true, // 单页面配置，默认开启，若页面中有锚点设计，需要将该配置删除，否则触发锚点会多触发 $pageview 事件
 		use_client_time:true, 
@@ -89,6 +89,7 @@ sensors.init({
 },
 
 	});
+	sensor.login('maomao');
 
    sensors.registerPage({
      $title: '测试title'
