@@ -90,19 +90,23 @@ sensors.init({
 
 	});
 	
-// 这段代码放在页面中，确保在 SDK 初始化之后执行
-window.addEventListener('beforeunload', function(e) {
-    // 标准写法：必须调用 preventDefault() 并设置 returnValue
-    e.preventDefault();
-    e.returnValue = '';  // 某些浏览器需要
-    // 现在浏览器会显示默认的离开确认对话框（“确定要离开此页面吗？”）
-    // 但我们要额外弹出自定义的 alert，证明执行了
-    
-    // 这里使用 setTimeout 是为了让弹窗在事件循环中稍后执行，避免被浏览器拦截
-    setTimeout(function() {
-        alert('beforeunload 已经触发！');
-    }, 0);
+<script>
+// 强制在页面加载时显示之前存储的标记（用于确认）
+document.addEventListener('DOMContentLoaded', function() {
+    var flag = localStorage.getItem('__beforeunload_test');
+    if (flag) {
+        alert('上次离开时 beforeunload 触发了！时间：' + flag);
+        localStorage.removeItem('__beforeunload_test'); // 清除，避免每次打开都弹
+    }
 });
+
+// 监听 beforeunload
+window.addEventListener('beforeunload', function() {
+    var now = new Date().toISOString();
+    localStorage.setItem('__beforeunload_test', now);
+    // 也可以用 sendBeacon 向服务器发一条日志，但这里先记录本地
+});
+</script>
    sensors.registerPage({
      $title: '测试title'
 });
