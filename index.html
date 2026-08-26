@@ -90,12 +90,13 @@ sensors.init({
 
 	});
 	
-window.addEventListener('beforeunload', function() {
-    console.log('beforeunload triggered');
-    // 如果有 sensors 对象，尝试手动上报测试
-    if (window.sensors) {
-        sensors.track('whxWebStay', { event_duration: 0 });
-    }
+window.addEventListener('beforeunload', function(e) {
+    // 1. 写入 localStorage（关闭后数据保留）
+    localStorage.setItem('__beforeunload_flag', 'true');
+    
+
+    
+    // 3. 不要用 alert，因为可能被拦截，而且会阻塞
 });
    sensors.registerPage({
      $title: '测试title'
