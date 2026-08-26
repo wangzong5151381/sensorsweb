@@ -90,7 +90,12 @@ sensors.init({
 
 	});
 	
+// 2. 立即添加调试监听（紧跟在初始化后面）
+window.addEventListener('beforeunload', function() {
+    console.log('beforeunload triggered');
+    
 
+});
    sensors.registerPage({
      $title: '测试title'
 });
