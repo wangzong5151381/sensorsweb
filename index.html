@@ -90,11 +90,24 @@ sensors.init({
 
 	});
 	
-// 2. 立即添加调试监听（紧跟在初始化后面）
+// 调试代码：监听 beforeunload
 window.addEventListener('beforeunload', function() {
-    console.log('beforeunload triggered');
-    
+    try {
+        // 写入本地存储，标记事件已触发
+        localStorage.setItem('__test_beforeunload', '触发于 ' + new Date().toISOString());
 
+       
+    } catch(e) {}
+});
+
+// 另外，在页面加载完成后，读取之前存储的记录（如果存在）
+document.addEventListener('DOMContentLoaded', function() {
+    var log = localStorage.getItem('__test_beforeunload');
+    if (log) {
+        console.log('【上次页面关闭】', log);
+        // 可将其显示在页面上或发送到服务器
+        // localStorage.removeItem('__test_beforeunload'); // 读完后可清除
+    }
 });
    sensors.registerPage({
      $title: '测试title'
