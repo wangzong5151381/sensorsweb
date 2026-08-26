@@ -90,13 +90,18 @@ sensors.init({
 
 	});
 	
-window.addEventListener('beforeunload', function() {
-    // 写入本地存储（不会随页面关闭而消失）
-    localStorage.setItem('my_close_test', new Date().toISOString());
+// 这段代码放在页面中，确保在 SDK 初始化之后执行
+window.addEventListener('beforeunload', function(e) {
+    // 标准写法：必须调用 preventDefault() 并设置 returnValue
+    e.preventDefault();
+    e.returnValue = '';  // 某些浏览器需要
+    // 现在浏览器会显示默认的离开确认对话框（“确定要离开此页面吗？”）
+    // 但我们要额外弹出自定义的 alert，证明执行了
     
-    if (window.sensors) {
-        sensors.track('whxWebStay', { event_duration: 0 });
-    }
+    // 这里使用 setTimeout 是为了让弹窗在事件循环中稍后执行，避免被浏览器拦截
+    setTimeout(function() {
+        alert('beforeunload 已经触发！');
+    }, 0);
 });
    sensors.registerPage({
      $title: '测试title'
