@@ -90,13 +90,13 @@ sensors.init({
 
 	});
 	
-window.addEventListener('beforeunload', function(e) {
-    // 1. 写入 localStorage（关闭后数据保留）
-    localStorage.setItem('__beforeunload_flag', 'true');
+window.addEventListener('beforeunload', function() {
+    // 写入本地存储（不会随页面关闭而消失）
+    localStorage.setItem('my_close_test', new Date().toISOString());
     
-
-    
-    // 3. 不要用 alert，因为可能被拦截，而且会阻塞
+    if (window.sensors) {
+        sensors.track('whxWebStay', { event_duration: 0 });
+    }
 });
    sensors.registerPage({
      $title: '测试title'
